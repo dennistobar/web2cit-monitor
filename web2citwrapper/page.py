@@ -20,7 +20,7 @@ class Page(object):
         print(scores)
         for test in tests:
             results = [test if 'results' in test.keys() else None]
-            results = filter(lambda x: x != None, results)
+            results = filter(lambda x: x is not None, results)
             scores[test['path']] = list(map(lambda x: x.score, results))
 
         return scores
