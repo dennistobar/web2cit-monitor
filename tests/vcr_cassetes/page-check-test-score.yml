@@ -1,0 +1,64 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.0
+    method: GET
+    uri: https://web2cit.toolforge.org/translate?url=https://www.elpais.com.uy/informacion/politica/lacalle-salio-cruce-diputado-mpp-dijo-hay-ola-robos-violentos.html&format=json&tests=true
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7WTS07DMBCGr2J5ieqkdAFSd10gVKlIFULdQBdDMm2MJrbxg6qqInEQrsCKI3AT
+        TsK0vFypLKt44YyTb/75Z3y7kQ5iI4ey1GZhfQuVtqZ0lnTUFZQEFRChCkDaqsqnClWtXYpQW9U6
+        xy8PVjWwVpZAeXtvg3rSltBEG4omtiR70mNIFIMc3m5kxNYRRJTD42fuenKhkeqvzAZazio1K7hZ
+        O2RdNkWuhGVJg6vgwKEfeS6bUM57rDT8exYq6xl22vU28psbdeT/cujkyzux9e79TQCJnX+iRvFj
+        Ie9JXE2n4jFtgw92t/l4fmFHRTIg2NXt9ztjxa+xdzIXeOw8B4p16Z50aLAem72SL0hM4f015PLy
+        2AEUgVkmWO5bx80wzM8xWegABVJsrJ8AtyxvwWw0ubgej8TleJKzZkDoNYhLTdvwN69fDM73n6y9
+        NfDM/g3FoD8YqP4ZrxzQzTvGNR4XPGhNjC4My3K1WhVIDnQoKtsWaX3Em8Z3OaI3nP3kRHbzTzkD
+        qN7eAwAA
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Language:
+      - en
+      Content-Security-Policy-Report-Only:
+      - 'default-src ''self'' ''unsafe-eval'' ''unsafe-inline'' blob: data: filesystem:
+        mediastream: *.toolforge.org wikibooks.org *.wikibooks.org wikidata.org *.wikidata.org
+        wikimedia.org *.wikimedia.org wikinews.org *.wikinews.org wikipedia.org *.wikipedia.org
+        wikiquote.org *.wikiquote.org wikisource.org *.wikisource.org wikiversity.org
+        *.wikiversity.org wikivoyage.org *.wikivoyage.org wiktionary.org *.wiktionary.org
+        *.wmcloud.org *.wmflabs.org wikimediafoundation.org mediawiki.org *.mediawiki.org
+        wss://web2cit.toolforge.org; report-uri https://csp-report.toolforge.org/collect;'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 25 Jul 2022 14:55:28 GMT
+      ETag:
+      - W/"3de-NyzJOvEK31LKw40iEnI32hTLZCo"
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx/1.14.2
+      Strict-Transport-Security:
+      - max-age=31622400
+      Transfer-Encoding:
+      - chunked
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      X-Powered-By:
+      - Express
+    status:
+      code: 200
+      message: OK
+version: 1
