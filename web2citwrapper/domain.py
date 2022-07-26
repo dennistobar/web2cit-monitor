@@ -17,6 +17,3 @@ class Domain(object):
                 map(lambda x: x.get('score'), local_fields))
 
         return scores
-
-    def __str__(self):
-        return self.domain
