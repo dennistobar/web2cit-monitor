@@ -37,10 +37,13 @@ def test_page_check_test(page_keys):
 
 
 @vcr.use_cassette('tests/vcr_cassetes/page-check-test-score.yml')
-def test_page_check_score(page_keys):
+def test_page_check_score():
     """Test an API call to some webpage testing"""
 
-    page = Page(url='https://www.elpais.com.uy/informacion/politica/lacalle-salio-cruce-diputado-mpp-dijo-hay-ola-robos-violentos.html')
+    url = 'https://www.elpais.com.uy/informacion/politica/lacalle-salio-cruce-diputado-mpp-dijo-hay-ola-robos-violentos.html'
+
+    page = Page(url=url)
     response = page.score()
 
     assert isinstance(response, dict)
+    assert isinstance(response.get(url), list)

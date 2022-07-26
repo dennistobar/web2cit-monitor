@@ -7,20 +7,23 @@ class Page(object):
 
     def info(self):
         """Retrieve general information from page"""
-        return comm.get(self.url)
+        return comm.get({'url': self.url})
 
     def tests(self):
         """Run the tests about the URL"""
-        return comm.get(self.url, {'tests': 'true'})
+        return comm.get({'url': self.url, 'tests': 'true'})
 
     def score(self):
         """Retrieve score from a path testing"""
         tests = self.tests()
         scores = {}
-        print(scores)
         for test in tests:
-            results = [test if 'results' in test.keys() else None]
-            results = filter(lambda x: x is not None, results)
-            scores[test['path']] = list(map(lambda x: x.score, results))
+            results = filter(lambda x: 'results' in x.keys(), tests)
+            fields = map(lambda x: x['score'], list(
+                results)[0].get('results')[0].get('fields'))
+            scores[test['href']] = list(fields)
 
         return scores
+
+    def __str__(self) -> str:
+        return self.url
