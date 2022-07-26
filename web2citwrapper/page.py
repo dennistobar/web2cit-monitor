@@ -24,6 +24,3 @@ class Page(object):
             scores[test['href']] = list(fields)
 
         return scores
-
-    def __str__(self) -> str:
-        return self.url
