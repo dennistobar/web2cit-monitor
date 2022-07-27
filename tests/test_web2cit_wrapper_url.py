@@ -5,8 +5,8 @@ import vcr
 
 @vcr.use_cassette('tests/vcr_cassetes/url_no_parsed.yml')
 def test_url_no_parsed():
+    """Test an API call to some webpage non parsed"""
     with raises(Exception):
-        """Test an API call to some webpage non parsed"""
 
         page = URL(url='https://mediawiki.org')
         response = page.retrieve()
