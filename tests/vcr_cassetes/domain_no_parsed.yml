@@ -1,0 +1,42 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.0
+    method: GET
+    uri: https://web2cit.toolforge.org/translate?format=json&domain=https%3A%2F%2Fmediawiki.org&tests=true
+  response:
+    body:
+      string: '{"info":{"apiVersion":"1.0.0"},"error":{"name":"Invalid domain","message":"Web2Cit
+        failed to create the Domain object: \"https://mediawiki.org\" is not a valid
+        domain name"}}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Language:
+      - en
+      Content-Length:
+      - '174'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 Jul 2022 04:05:54 GMT
+      ETag:
+      - W/"ae-XuZd8NXBu3G+WzGLIp26birqVaU"
+      Server:
+      - nginx/1.14.2
+      X-Powered-By:
+      - Express
+    status:
+      code: 400
+      message: Bad Request
+version: 1
