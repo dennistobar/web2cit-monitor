@@ -9,4 +9,4 @@ def test_no_url():
 
 def test_error_url():
     with raises(comm.Web2CitError):
-        comm.get({'ulr': 'invalid'})
+        comm.get({'url': 'invalid'})
