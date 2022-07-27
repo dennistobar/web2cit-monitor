@@ -11,17 +11,23 @@ interactions:
       User-Agent:
       - python-requests/2.28.0
     method: GET
-    uri: https://web2cit.toolforge.org/translate?format=json&domain=www.lavoz.com.ar&tests=true
+    uri: https://web2cit.toolforge.org/translate?format=json&domain=www.elobservador.com.uy&tests=true
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA72Tv07DMBDGX8XyiOIGGChk61iJgQGxVB2uyaWx5Pgs22lEQx6pUx+hL8alLW0Y
-        kBADUqIovj/f/T7bi046iJXMZOrI6KhzSGGjyaqc37JBHzGo3Dc5fwwochR0PsSdLjQpbSN6hwa8
-        qrXVIXoKyqEnhUZRyalgdKhJGVIe8wq2lMpEegyNiUFmi05GrJ2BiDLr+kSWGk1xClioeVFqTnh9
-        d8hl1ETXRK6SLa4crFEuE64PxyWLbXDA2jPPGOYYCzl57nHbJ508t4s6cmzca7bRh70VG7S4JQOW
-        qTzYwy4TBsQZeEgYiA97cUUWIC7QiRioBRoxohaGxIma6z7EC5nDbrB4PPbf1X+vPeh9WTF5nD49
-        3F+f6cgb16x4tyos5vabQ88g3mgrCqabDxuuyY8RfgifFe9GAuzuuhn2bew/hnGz09+ldtnz7JXH
-        kk9CFaMLWZq2bTsxsKHtJKd6Av5fjy5fF3bA8jg3N7JffgIc88Y+QQMAAA==
+        H4sIAAAAAAAAA+2Uz2obMRDGX0XoGCyvd71OHd9KaKEQaKH/Dk0Ok91xrCJLQtLGuMEPlFtL3iB+
+        sY52nURuHEgKTXso7EFoV9/OfJ/md8Glnho+ueBg5Sd0XhrNJzzvD/oD3uOV0VN5Fl9bCAGd9pv1
+        jD76jKfFoQxZDQGyZplVZp6hMqce3TnUxmWLxSK7Odf/6kl51eMB51ZBwCcr3R7spHrc4bms+aQY
+        Fvv7ZXHQavvwG7p06J7m8GAwGg5WK1KN/cW2A7gzjPpfWjuiBZk21LsHFYwAVYH+ZoQyXpSFGIlK
+        LIUzcyuNQCUcVsbVYiZ9ME5WRtQoYkvoIDQOBGp60NG3WjSuOWtgKYpBUeR5+WJUDCkMh75Rm//f
+        mJHE8Yy1kClTiaruvNAwR/JCUk0flhapUtME2wQyimtceAvU5EsXZKWQn8Qb4B9858kkEstXvQu+
+        0Q0y0LlU9H30m3V+r68YGc7Koje6/n7Ilqx1nHZRMbe+jJ6z6Pn6KprOamSJ6Qw1PWR6XHzsTE8r
+        /OM/2tEu3bbtbuMlEINc5GVa2vbuDh3bnCrpZ1i/0VvmvVLs7e2Ipor3XuwQhSbMjDsCCjAJ5C5T
+        Wj146rV0jzmWSiTrHp85nNI1m4Vg/SSLcOmntOkTfvpEoeecyA3cqKq9PWLbL1hQUIFSSBSg+4+S
+        Zpxwek6MBWe0sMbR/CucGm2EBXo7Bx3ibexo4S0SVJZCgQhGESV0JVtK0AaxJICYSg0qYoR2Kphb
+        0NASY5iPCRrjsqSM/jNjA6KjLgwCxLsuDJaEwSgM4oJaX8Y0WEyDHfObPFqUYJsHHVfA7vI45pEc
+        tNUmwtpEImNop01k/QPSEfurRewYzAdYMxT5mJ8kCH4kS1bJvKbrp83uvzA224OdtrX6CU+aTgYy
+        CQAA
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -42,9 +48,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 26 Jul 2022 02:09:32 GMT
+      - Wed, 27 Jul 2022 04:07:51 GMT
       ETag:
-      - W/"341-wBT1N3Pp6zOlarnbgMhPrwJBdF8"
+      - W/"932-n94EYAss3VkMZas/QAhurQemjug"
       Permissions-Policy:
       - interest-cohort=()
       Server:

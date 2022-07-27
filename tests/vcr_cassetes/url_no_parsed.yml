@@ -11,14 +11,15 @@ interactions:
       User-Agent:
       - python-requests/2.28.0
     method: GET
-    uri: https://web2cit.toolforge.org/translate?url=https://mediawiki.org&format=json
+    uri: https://web2cit.toolforge.org/translate?format=json&url=https%3A%2F%2Fmediawiki.org&tests=true
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA1WPMQrDMAxF76IxmGT3DTp0K3QIGRyixKKOY2wZU0zuXoV2qNEmvSfpjxWCYQsa
-        BlAQMWXHCfRYgXEPzjCCrqeCldAt34E3uzSBBHi8A4p2ZA6ZxYKCczAbwnSqCj+QiV1L3XEh86QX
-        NVzIs6Nkcbn5dmcp/X4ZRYz+iFtjOeO3fJ38fwO9MFIKbMRVnrXMIelhaPZciSU8Y/SCdB2c0wcZ
-        5LRvDwEAAA==
+        H4sIAAAAAAAAA42RMW/EIAyF/4vHUwTXjlk7dehW9YZTB9I4xC0hCIyiKsp/r2m562U7sSD43vOz
+        vQL5YYZ2BRPoDWOi2UMLD+qojtDAx+wHsuU7GGaMPtX7KNAJu8cnYt0bNnqOVk/Yk1noi/SFVp9J
+        /LYGGKfgDOOd+it+Y5D4brGgVbhJ7ZKvxGYTLRaT8287pQUtPUZM2dXnS13BRTgQuv6P92ZC4UmA
+        1++AIpszh8xiBgt2wViE961ZoYJM7PbUSxnOSYaz40LuHKUR+2e/91wWdR2nkuHuVM54m0vJ2xjo
+        hZHTwBhxkLAjc0it/l9L8Skd1+0IcjiASLYfvtpAHwYCAAA=
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -39,9 +40,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 25 Jul 2022 14:55:21 GMT
+      - Wed, 27 Jul 2022 03:31:28 GMT
       ETag:
-      - W/"10f-vLj9nbDmCdpkjGHephree3CDZMc"
+      - W/"206-XYykYXK3UMpl0M7oxqctxPxajL0"
       Permissions-Policy:
       - interest-cohort=()
       Server:

@@ -11,14 +11,20 @@ interactions:
       User-Agent:
       - python-requests/2.28.0
     method: GET
-    uri: https://web2cit.toolforge.org/translate?url=https://mediawiki.org&format=json&tests=true
+    uri: https://web2cit.toolforge.org/translate?format=json&url=https%3A%2F%2Fwww.elpais.com.uy%2Finformacion%2Fpolitica%2Flacalle-salio-cruce-diputado-mpp-dijo-hay-ola-robos-violentos.html&tests=true
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA1WPMQrDMAxF76IxmGT3DTp0K3QIGRyixKKOY2wZU0zuXoV2qNEmvSfpjxWCYQsa
-        BlAQMWXHCfRYgXEPzjCCrqeCldAt34E3uzSBBHi8A4p2ZA6ZxYKCczAbwnSqCj+QiV1L3XEh86QX
-        NVzIs6Nkcbn5dmcp/X4ZRYz+iFtjOeO3fJ38fwO9MFIKbMRVnrXMIelhaPZciSU8Y/SCdB2c0wcZ
-        5LRvDwEAAA==
+        H4sIAAAAAAAAA7WUS4obMRCGryK0HPqdEAfvTBgGgwMmBGeRZFHuLrtl1JIiqccY05CD5ApZ5Qhz
+        k5wkJT8GGZyBWRj1Qq3Hp/r/kmrPhVppPt5zMGKB1gmt+JiXWZEVPOG1ViuxDtMGvEer3Knf0qIv
+        uKw+CJ834CHvd3mtuxylAeHy7Xabn3dkG0fMIeEeOyPB4ysYz1uOkIRbfBQNH1dv3hZFVY4OVOdf
+        RaTl12jl+2oYiBfUBJEe7BoD+etBfBCcB69sBzWZlBsthRc15BJqkBJTB1LotLZ9jWkjTO+h0Wln
+        DP1sdNrCLtUSUquX2qWPQktUXrus9Z0koy26Xp5OO4uOrL7ZySR4JVA2R50KOiSdgiL4vDNIcene
+        kxIygSvcOgMG7cSSbIn8e8io+++cq7UlWDkke37ieuFpXwydHb1jwbunPwwkO/jHGmRnC6kv2cf5
+        nP3ow+BGHzp/f/4iR1mvgJGrYf3BWPZs7DceB3jrc66INf1SCtdiM1UXku8lm8PTbxeHF49dQUlQ
+        6x7Wl9ZRMhTxY0w0dIUCvW+1nQGlLE7BYjK7/zSdsIfpLGYtQKIVwB6EDMMnXpFVo8sWpZdezkWI
+        0QWpiqpKi3f0xbAhBo/KKm4vzSW8tbiii9p6b9w4D+UmO1aejIpQRrXodi/1VNbo9Ls7/lKUw/AP
+        svdL5l0FAAA=
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -39,9 +45,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 25 Jul 2022 14:55:23 GMT
+      - Wed, 27 Jul 2022 03:38:50 GMT
       ETag:
-      - W/"10f-vLj9nbDmCdpkjGHephree3CDZMc"
+      - W/"55d-kqLsY1KH9pgVGTp4Xweq6Y/yLAg"
       Permissions-Policy:
       - interest-cohort=()
       Server:

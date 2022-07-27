@@ -1,19 +1,25 @@
-from web2citwrapper import comm
+from . import comm, Result
+
+
+class URLParseError(Exception):
+    """Raised when the JSON cannot be parsed"""
 
 
 class Domain(object):
-    def __init__(self, domain):
+    def __init__(self, domain: str):
         self.domain = domain
 
-    def tests(self):
-        return comm.get({'domain': self.domain, 'tests': 'true'})
+    def retrieve(self) -> list:
+        json = comm.get({'domain': self.domain, 'tests': 'true'})
+        targets = self._parse_response(json)
+        results = []
+        for target in targets:
+            results.append(Result(target))
+        return results
 
-    def score(self):
-        tests = self.tests()
-        scores = {}
-        for test in tests:
-            local_fields = test.get('results').pop().get('fields')
-            scores[test.get('href')] = list(
-                map(lambda x: x.get('score'), local_fields))
-
-        return scores
+    def _parse_response(self, json: dict = None) -> dict:
+        if 'data' not in json.keys():
+            raise URLParseError
+        if 'targets' not in json.get('data') or isinstance(json.get('data').get('targets'), list) is False:
+            raise URLParseError
+        return json.get('data').get('targets')
