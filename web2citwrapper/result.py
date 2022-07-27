@@ -7,7 +7,6 @@ class Result(object):
 
     def __init__(self, data: dict = None):
         self.data = data
-        print(data)
 
     def path(self) -> str:
         """Obtain tested path"""
