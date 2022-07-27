@@ -4,7 +4,6 @@ from . import comm
 
 class URLParseError(Exception):
     """Raised when the JSON cannot be parsed"""
-    pass
 
 
 class URL(object):

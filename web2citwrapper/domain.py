@@ -2,7 +2,7 @@ from . import comm, Result
 
 
 class URLParseError(Exception):
-    pass
+    """Raised when the JSON cannot be parsed"""
 
 
 class Domain(object):
@@ -19,7 +19,7 @@ class Domain(object):
 
     def _parse_response(self, json: dict = None) -> dict:
         if 'data' not in json.keys():
-            raise URLParseError()
-        if 'targets' not in json.get('data') or isinstance(json.get('data').get('targets'), list) == False:
-            raise URLParseError()
+            raise URLParseError
+        if 'targets' not in json.get('data') or isinstance(json.get('data').get('targets'), list) is False:
+            raise URLParseError
         return json.get('data').get('targets')

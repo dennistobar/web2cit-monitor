@@ -7,12 +7,10 @@ PARAMETERS = {'format': 'json'}
 
 class ParametersMissinError(Exception):
     """Raised when parameters is not provided"""
-    pass
 
 
 class Web2CitError(Exception):
     """Raised when the web2cit service returns an error"""
-    pass
 
 
 def get(parameters: dict = None) -> dict:
