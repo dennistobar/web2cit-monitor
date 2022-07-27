@@ -14,7 +14,7 @@ def test_domain_no_parsed():
 
 
 @vcr.use_cassette('tests/vcr_cassetes/domain_parsed.yml')
-def test_url_parsed():
+def test_domain_parsed():
     """Test an API call to some domain parsed"""
 
     page = Domain(domain='www.elobservador.com.uy')
@@ -25,15 +25,15 @@ def test_url_parsed():
         assert isinstance(response, Result)
 
 
-# def test_url_parse_no_data():
-#     """Test parsing an URL with errors"""
-#     with raises(Exception):
-#         page = URL('dummy')
-#         page._parse_response({})
+def test_domain_parse_no_data():
+    """Test parsing an URL with errors"""
+    with raises(Exception):
+        page = Domain(domain='dummy')
+        page._parse_response({})
 
 
-# def test_url_parse_no_target():
-#     """Test parsing an URL with errors"""
-#     with raises(Exception):
-#         page = URL('dummy')
-#         page._parse_response({'data': {}})
+def test_domain_parse_no_target():
+    """Test parsing an URL with errors"""
+    with raises(Exception):
+        page = Domain(domain='dummy')
+        page._parse_response({'data': {}})
