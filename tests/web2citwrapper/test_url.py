@@ -33,17 +33,3 @@ def test_url_parsed():
     assert isinstance(response.result(), dict)
     assert isinstance(response.fields(), list)
     assert isinstance(response.score(), float)
-
-
-def test_url_parse_no_data():
-    """Test parsing an URL with errors"""
-    with raises(Exception):
-        page = URL('dummy')
-        page._parse_response({})
-
-
-def test_url_parse_no_target():
-    """Test parsing an URL with errors"""
-    with raises(Exception):
-        page = URL('dummy')
-        page._parse_response({'data': {}})

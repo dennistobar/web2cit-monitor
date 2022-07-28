@@ -62,7 +62,7 @@ class ElementBase(object):
         if 'targets' not in json.get('data'):
             raise NoResultsError
         if isinstance(json.get('data').get('targets'), list) is False:
-            raise URLParseError
+            raise NoResultsError
         if len(json.get('data').get('targets')) == 0:
             raise NoResultsError
         return json.get('data').get('targets')
