@@ -1,4 +1,5 @@
-from web2citwrapper import Result, Domain
+import types
+from web2citwrapper import ResultElement, Domain
 from pytest import raises
 import vcr
 
@@ -7,22 +8,23 @@ import vcr
 def test_domain_no_parsed():
     """Test an API call to some domain non parsed"""
     with raises(Exception):
-        page = Domain(domain='https://mediawiki.org')
+        page = Domain('https://mediawiki.org')
         response = page.retrieve()
+        next(response)
 
-        assert isinstance(response, list)
+        assert isinstance(response, types.GeneratorType)
 
 
 @vcr.use_cassette('tests/vcr_cassetes/domain_parsed.yml')
 def test_domain_parsed():
     """Test an API call to some domain parsed"""
 
-    page = Domain(domain='www.elobservador.com.uy')
+    page = Domain('www.elobservador.com.uy')
     responses = page.retrieve()
 
-    assert isinstance(responses, list)
+    assert isinstance(responses, types.GeneratorType)
     for response in responses:
-        assert isinstance(response, Result)
+        assert isinstance(response, ResultElement)
 
 
 def test_domain_parse_no_data():

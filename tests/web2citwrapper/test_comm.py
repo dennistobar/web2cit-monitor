@@ -3,7 +3,7 @@ from web2citwrapper import comm
 
 
 def test_no_url():
-    with raises(comm.ParametersMissinError):
+    with raises(comm.ParametersMissingError):
         comm.get()
 
 
