@@ -1,3 +1,4 @@
+from typing import Iterator
 from . import comm, Result
 
 
@@ -9,13 +10,11 @@ class Domain(object):
     def __init__(self, domain: str):
         self.domain = domain
 
-    def retrieve(self) -> list:
+    def retrieve(self) -> Iterator[Result]:
         json = comm.get({'domain': self.domain, 'tests': 'true'})
         targets = self._parse_response(json)
-        results = []
         for target in targets:
-            results.append(Result(target))
-        return results
+            yield Result(target)
 
     def _parse_response(self, json: dict = None) -> dict:
         if 'data' not in json.keys():

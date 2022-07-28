@@ -1,3 +1,4 @@
+from typing import Iterator
 from web2citwrapper import Result, Domain
 from pytest import raises
 import vcr
@@ -20,7 +21,7 @@ def test_domain_parsed():
     page = Domain(domain='www.elobservador.com.uy')
     responses = page.retrieve()
 
-    assert isinstance(responses, list)
+    assert isinstance(responses, Iterator)
     for response in responses:
         assert isinstance(response, Result)
 
