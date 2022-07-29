@@ -21,12 +21,14 @@ class ResultElement(object):
         Obtain results. Per design, results is an array with one element...
         it could be safe do .pop
         """
+        if 'error' in self.data.keys():
+            raise NoResultsError(self.data.get('error').get('message', ''))
         if 'results' not in self.data.keys():
-            raise NoResultsError
+            raise NoResultsError('There is no results key')
         if isinstance(self.data.get('results'), list) is False:
-            raise NoResultsError
+            raise NoResultsError('results is not a list')
         if len(self.data.get('results')) == 0:
-            raise NoResultsError
+            raise NoResultsError('results has no elements')
         return self.data.get('results')[0]
 
     def fields(self) -> list:
@@ -57,14 +59,16 @@ class ElementBase(object):
 
     def _parse_response(self, json: dict = None) -> dict:
         """Parse the JSON retrieved"""
+        if 'error' in json.keys():
+            raise NoResultsError(json.get('error').get('message', ''))
         if 'data' not in json.keys():
-            raise NoResultsError
+            raise NoResultsError('There is no "data" key')
         if 'targets' not in json.get('data'):
-            raise NoResultsError
+            raise NoResultsError('There is no "targets" key')
         if isinstance(json.get('data').get('targets'), list) is False:
-            raise NoResultsError
+            raise NoResultsError('Targets is not a list')
         if len(json.get('data').get('targets')) == 0:
-            raise NoResultsError
+            raise NoResultsError('Target is a empty list')
         return json.get('data').get('targets')
 
 
