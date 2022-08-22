@@ -17,7 +17,7 @@ class Prefix(object):
             title = page.title().replace(self.prefix, '')
             parts = title.split('/')[:-1]
             json_name = title.split('/')[-1]
-            if json_name.find('tests.json') == -1:
+            if json_name.find('patterns.json') != -1:
                 continue
             parts.reverse()
             domain = '.'.join(parts)

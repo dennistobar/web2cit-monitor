@@ -19,7 +19,8 @@ def get(parameters: dict = None) -> dict:
         raise ParametersMissingError
 
     headers = {
-        'User-Agent': 'Web2Cit/1.0 (https://mediawiki.org/wiki/Web2Cit/; web2cit@test.org)'}
+        'User-Agent': 'Web2Cit/1.0 (https://mediawiki.org/wiki/Web2Cit/; web2cit@test.org)'
+    }
     request = requests.get(URL, {**PARAMETERS, **parameters}, headers=headers)
     json = request.json()
     if 'error' in json.keys():
