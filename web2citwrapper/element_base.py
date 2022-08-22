@@ -1,5 +1,6 @@
 from web2citwrapper import comm
 from typing import Iterator
+import statistics
 
 
 class NoResultsError(Exception):
@@ -46,16 +47,40 @@ class ResultElement(object):
 
 class ElementBase(object):
     value = {}
+    targets = []
+    info_data = {}
 
     def __init__(self, value: dict = None):
         self.value = value
 
     def retrieve(self) -> Iterator[ResultElement]:
         """Obtain elements from communication with API"""
-        json = comm.get({**self.value, 'tests': 'true'})
-        targets = self._parse_response(json)
-        for target in targets:
+        if len(self.targets) == 0:
+            json = comm.get({**self.value, 'tests': 'true'})
+            self.info_data = json.get('info', {})
+            self.targets = self._parse_response(json)
+        for target in self.targets:
             yield ResultElement(target)
+
+    def tests_counted(self) -> int:
+        """Obtain number of tests"""
+        return len(list(self.retrieve()))
+
+    def score(self) -> float:
+        """Obtain score of result"""
+        return statistics.mean([x.score() for x in self.retrieve()])
+
+    def info(self) -> dict:
+        """Obtain information about result"""
+        if len(self.info_data) == 0:
+            self.retrieve()
+        return self.info_data
+
+    def get_config(self, name: str) -> dict:
+        """Obtain configuration for result"""
+        if len(self.info_data) == 0:
+            return None
+        return self.info_data.get('config', {}).get(name, {}).get('revid', '-')
 
     def _parse_response(self, json: dict = None) -> dict:
         """Parse the JSON retrieved"""
