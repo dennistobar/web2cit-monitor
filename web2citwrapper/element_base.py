@@ -1,5 +1,6 @@
 from web2citwrapper import comm
 from typing import Iterator
+import statistics
 
 
 class NoResultsError(Exception):
@@ -21,12 +22,14 @@ class ResultElement(object):
         Obtain results. Per design, results is an array with one element...
         it could be safe do .pop
         """
+        if 'error' in self.data.keys():
+            raise NoResultsError(self.data.get('error').get('message', ''))
         if 'results' not in self.data.keys():
-            raise NoResultsError
+            raise NoResultsError('There is no results key')
         if isinstance(self.data.get('results'), list) is False:
-            raise NoResultsError
+            raise NoResultsError('results is not a list')
         if len(self.data.get('results')) == 0:
-            raise NoResultsError
+            raise NoResultsError('results has no elements')
         return self.data.get('results')[0]
 
     def fields(self) -> list:
@@ -44,27 +47,53 @@ class ResultElement(object):
 
 class ElementBase(object):
     value = {}
+    targets = []
+    info_data = {}
 
     def __init__(self, value: dict = None):
         self.value = value
 
     def retrieve(self) -> Iterator[ResultElement]:
         """Obtain elements from communication with API"""
-        json = comm.get({**self.value, 'tests': 'true'})
-        targets = self._parse_response(json)
-        for target in targets:
+        if len(self.targets) == 0:
+            json = comm.get({**self.value, 'tests': 'true'})
+            self.info_data = json.get('info', {})
+            self.targets = self._parse_response(json)
+        for target in self.targets:
             yield ResultElement(target)
+
+    def tests_counted(self) -> int:
+        """Obtain number of tests"""
+        return len(list(self.retrieve()))
+
+    def score(self) -> float:
+        """Obtain score of result"""
+        return statistics.mean([x.score() for x in self.retrieve()])
+
+    def info(self) -> dict:
+        """Obtain information about result"""
+        if len(self.info_data) == 0:
+            self.retrieve()
+        return self.info_data
+
+    def get_config(self, name: str) -> dict:
+        """Obtain configuration for result"""
+        if len(self.info_data) == 0:
+            return None
+        return self.info_data.get('config', {}).get(name, {}).get('revid', '-')
 
     def _parse_response(self, json: dict = None) -> dict:
         """Parse the JSON retrieved"""
+        if 'error' in json.keys():
+            raise NoResultsError(json.get('error').get('message', ''))
         if 'data' not in json.keys():
-            raise NoResultsError
+            raise NoResultsError('There is no "data" key')
         if 'targets' not in json.get('data'):
-            raise NoResultsError
+            raise NoResultsError('There is no "targets" key')
         if isinstance(json.get('data').get('targets'), list) is False:
-            raise NoResultsError
+            raise NoResultsError('Targets is not a list')
         if len(json.get('data').get('targets')) == 0:
-            raise NoResultsError
+            raise NoResultsError('Target is a empty list')
         return json.get('data').get('targets')
 
 

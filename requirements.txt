@@ -1,3 +1,5 @@
 requests==2.28
 vcrpy==4.2
 pytest==7.1
+pywikibot
+Mako
