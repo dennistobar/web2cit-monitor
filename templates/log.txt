@@ -5,6 +5,6 @@
 ${new_text}
 </onlyinclude>
 <noinclude>
-{$old_text}
+${old_text}
 </noinclude>
 |}

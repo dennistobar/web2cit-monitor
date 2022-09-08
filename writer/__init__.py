@@ -2,9 +2,10 @@ from web2citwrapper import Domain
 from datetime import datetime
 from mako.template import Template
 from mako.lookup import TemplateLookup
+import re
 
 
-def write_main_log(domain: Domain, trigger: str = 'programmed'):
+def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: str = ''):
     """
     Writes the main log file for the given domain.
     """
@@ -17,7 +18,10 @@ def write_main_log(domain: Domain, trigger: str = 'programmed'):
     patterns = domain.get_config('patterns')
     tests = domain.get_config('tests')
 
-    text = """{{{{ Web2Cit/monitor/log/row
+    mylookup = TemplateLookup(directories=['.', 'templates'])
+    log = Template(filename='templates/log.txt', lookup=mylookup)
+
+    text = """{{{{ :Web2Cit/monitor/log/row
     | timestamp = {0}
     | trigger = {1}
     | tests_run = {2}
@@ -29,7 +33,15 @@ def write_main_log(domain: Domain, trigger: str = 'programmed'):
         datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S%z'), trigger,
         tests_counted, score, templates, patterns, tests)
 
-    return text
+    past = re.search(r"<onlyinclude>(.*)<\/onlyinclude>",
+                     previous_text, re.DOTALL | re.MULTILINE)
+
+    older = re.search(r"<noinclude>(.*)<\/noinclude>",
+                      previous_text, re.DOTALL | re.MULTILINE)
+
+    old_text = "\n".join(past.groups()) + '\n' + "\n".join(older.groups()) + '\n'
+
+    return log.render(new_text=text, old_text=old_text)
 
 
 def write_detailed(domain: Domain) -> str:
