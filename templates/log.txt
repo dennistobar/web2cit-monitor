@@ -1,0 +1,10 @@
+{| class="wikitable sortable"
+|-
+! Timestamp !! Trigger !! # tests run !! avg score !! templates revid !! patterns revid !! tests revid
+<onlyinclude>
+${new_text}
+</onlyinclude>
+<noinclude>
+{$old_text}
+</noinclude>
+|}
