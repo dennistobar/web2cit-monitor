@@ -33,13 +33,17 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
         datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S%z'), trigger,
         tests_counted, score, templates, patterns, tests)
 
+    # Obtain the latest check
     past = re.search(r"<onlyinclude>(.*)<\/onlyinclude>",
                      previous_text, re.DOTALL | re.MULTILINE)
 
+    # Obtain the past checks
     older = re.search(r"<noinclude>(.*)<\/noinclude>",
                       previous_text, re.DOTALL | re.MULTILINE)
 
-    old_text = "\n".join(past.groups()) + '\n' + "\n".join(older.groups()) + '\n'
+    # Join in a new text
+    old_text = "\n".join(past.groups()) + '\n' + \
+        "\n".join(older.groups()) + '\n'
 
     return log.render(new_text=text, old_text=old_text)
 
