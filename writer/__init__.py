@@ -41,9 +41,12 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     older = re.search(r"<noinclude>(.*)<\/noinclude>",
                       previous_text, re.DOTALL | re.MULTILINE)
 
+    # Join all groups if exists
+    past_text = "\n".join(past.groups()) if past is not None else ''
+    older_text = "\n".join(older.groups()) if older is not None else ''
+
     # Join in a new text
-    old_text = "\n".join(past.groups()) + '\n' + \
-        "\n".join(older.groups()) + '\n'
+    old_text = past_text + '\n' + older_text
 
     return log.render(new_text=text, old_text=old_text)
 
