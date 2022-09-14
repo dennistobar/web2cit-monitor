@@ -1,22 +1,15 @@
 <%page args="field"/>
-{{:Web2Cit/monitor/log/field
+|-
+{{:Web2Cit/monitor/templates/results/field
 |fieldname = ${field.get('name', '')}
 |expected =
-    <table class="wikitable">
     % for test_field in field.get('test', []):
-        <tr>
-            <td>${test_field}</td>
-        </tr>
+* ${test_field}
         % endfor
-    </table>
 |actual =
-     <table class="wikitable">
-        % for output_field in field.get('output', []):
-        <tr>
-            <td>${output_field}</td>
-        </tr>
+    % for output_field in field.get('output', []):
+* ${output_field}
         % endfor
-    </table>
-|score = ${round(field.get('score', 0), 4)*100}%
+|score = ${round(field.get('score'), 4)*100 if field.get('score') is not None else '-'}
 |since = ?
 }}
