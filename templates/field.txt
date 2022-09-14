@@ -1,0 +1,15 @@
+<%page args="field"/>
+|-
+{{:Web2Cit/monitor/templates/results/field
+|fieldname = ${field.get('name', '')}
+|expected =
+    % for test_field in field.get('test', []):
+* ${test_field}
+        % endfor
+|actual =
+    % for output_field in field.get('output', []):
+* ${output_field}
+        % endfor
+|score = ${round(field.get('score'), 4)*100 if field.get('score') is not None else '-'}
+|since = ?
+}}

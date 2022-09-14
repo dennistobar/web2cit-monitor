@@ -171,3 +171,5 @@ cython_debug/
 pywikibot*
 apicache-*
 throttle*
+
+user-config.py

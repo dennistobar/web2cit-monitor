@@ -7,9 +7,9 @@ Web2Cit translation test for domain ''${domain_name}''
 |-
 ! Timestamp !! Trigger !! # tests run !! avg score !! templates revid !! patterns revid !! tests revid
 |-
-{{/log}}
+{{../log}}
 |}
-''([[/log|all checks]])''
+''([[../log|all checks]])''
 
 == Test results ==
 Add this page to your watchlist to get notifications when test results change.
@@ -31,29 +31,9 @@ Add this page to your watchlist to get notifications when test results change.
 === ${path.path()} ===
 {| class="wikitable"
 |-
-! Fieldname || Expected || Actual || Score || Since<ref name="since"/>
+! Fieldname || Actual || Expected || Score || Since<ref name="since"/>
     % for field in path.fields():
-    |-
-    | ${field.get('name', '')}
-    |
-        {| class="wikitable"
-        % for test_field in field.get('test', []):
-        |-
-        | ${test_field}
-        % endfor
-        |}
-    |
-        {| class="wikitable"
-        % for output_field in field.get('output', []):
-        |-
-        | ${output_field}
-        % endfor
-        |}
-        % if field.get('score') is None:
-    | -
-        % else:
-    | ${round(field.get('score'), 4)*100}% || ?
-        % endif
+        <%include file="field.txt" args="field=field"/>
     % endfor
 |}
 % endfor

@@ -68,7 +68,7 @@ class ElementBase(object):
 
     def score(self) -> float:
         """Obtain score of result"""
-        return statistics.mean([x.score() for x in self.retrieve()])
+        return statistics.mean([x.score() if x.score() is not None else 0 for x in self.retrieve()])
 
     def info(self) -> dict:
         """Obtain information about result"""
@@ -100,6 +100,14 @@ class ElementBase(object):
 class Domain(ElementBase):
     def __init__(self, domain: str):
         super().__init__({'domain': domain})
+
+    def get_domain_to_meta(self):
+        """Get the URL for the domain to use in Meta"""
+        domain = self.value.get('domain')
+        if domain is None:
+            raise NoResultsError('Domain is not a valid domain')
+
+        return "/".join(domain.split('.')[::-1])
 
 
 class URL(ElementBase):
