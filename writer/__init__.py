@@ -9,7 +9,6 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     """
     Writes the main log file for the given domain.
     """
-    print(trigger)
     tests_counted = domain.tests_counted()
     if domain.score() is None:
         score = '?'
@@ -23,15 +22,16 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     log = Template(filename='templates/log.txt', lookup=mylookup)
 
     text = """|-
-    {{{{ :Web2Cit/monitor/templates/log/row
-    | timestamp = {0}
-    | trigger = {1}
-    | tests_run = {2}
-    | avg_score = {3}
-    | templates_rev_id = {4}
-    | patterns_rev_id = {5}
-    | tests_rev_id = {6}
-    }}}}""".format(
+{{{{ :Web2Cit/monitor/templates/log/row
+| timestamp = {0}
+| trigger = {1}
+| tests_run = {2}
+| avg_score = {3}
+| templates_rev_id = {4}
+| patterns_rev_id = {5}
+| tests_rev_id = {6}
+    }}}}
+|-""".format(
         datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S%z'), trigger,
         tests_counted, score, templates, patterns, tests)
 
