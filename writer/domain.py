@@ -11,10 +11,11 @@ import pywikibot
 
 class DomainWriter(object):
 
-    def __init__(self, domain: str, log: bool = False):
+    def __init__(self, domain: str, log: bool = False, trigger: str = 'programmed'):
         self.domain = domain
         self.has_log = log
         self.site = pywikibot.Site("meta", "meta")
+        self.trigger = trigger
         self.prefix = 'Web2Cit/monitor/checks/'
 
     def write(self):
@@ -27,10 +28,12 @@ class DomainWriter(object):
             page_base_log = self.get_page(domain.get_domain_to_meta(), 'log')
 
             results_text = write_detailed(domain)
-            log_text = write_main_log(domain)
+            log_text = write_main_log(
+                domain, trigger=self.trigger, previous_text=page_base_log.text)
 
             if self.has_log is True:
-                self.write_log(domain, page_base_log)
+                self.write_log('domain', results_text)
+                self.write_log('logs', log_text)
                 print('Log write: {}'.format(self.domain))
             if self.has_log is False:
                 self.write_meta(page_base, results_text)
@@ -42,16 +45,12 @@ class DomainWriter(object):
         except NoResultsError as e:
             print('[!] {} error {}'.format(self.domain, e))
 
-    def write_log(self, domain: dict, page_base_log: pywikibot.Page):
+    def write_log(self, type: str, text: str):
         """
         Writes the log file.
         """
-        with open(os.path.join('./logs/domains/{}.log'.format(self.domain)), 'w') as file:
-            file.write(write_detailed(domain))
-        with open(os.path.join('./logs/logs/{}.log'.format(self.domain)), 'w') as file:
-            file.write(write_main_log(domain,
-                                      trigger='manual',
-                                      previous_text=page_base_log.text))
+        with open(os.path.join('./logs/{}/{}.log'.format(type, self.domain)), 'w') as file:
+            file.write(text)
 
     def write_meta(self, page: pywikibot.Page, text: str,
                    summary: str = 'Update domain check'):

@@ -13,6 +13,8 @@ def parse_args():
                         help="Execute all domains from Meta")
     parser.add_argument('--log', action='store_true',
                         help="Writes in logs file and not in Meta (just debug in local mode)")
+    parser.add_argument('--trigger', type=str, default="manual",
+                        help="Explanation about invocation")
     return parser.parse_args()
 
 
@@ -22,8 +24,9 @@ def main():
     parameters = vars(args)
 
     if parameters.get('domain') is not None:
-        writer = DomainWriter(domain=parameters.get(
-            'domain'), log=parameters.get('log'))
+        writer = DomainWriter(domain=parameters.get('domain'),
+                              log=parameters.get('log'),
+                              trigger=parameters.get('trigger'))
         writer.write()
         return
 
@@ -31,7 +34,8 @@ def main():
         pf = Prefix()
         for domain_name in pf.run():
             writer = DomainWriter(domain=domain_name,
-                                  log=parameters.get('log'))
+                                  log=parameters.get('log'),
+                                  trigger=parameters.get('trigger'))
             writer.write()
 
 
