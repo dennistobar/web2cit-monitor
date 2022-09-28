@@ -1,8 +1,6 @@
 import os
-from time import time
-from web2citwrapper import URL, Domain
+from web2citwrapper import Domain
 from writer import write_detailed, write_main_log
-from monitor import Prefix
 from web2citwrapper import Domain
 from web2citwrapper.comm import Web2CitError
 from web2citwrapper.element_base import NoResultsError
@@ -16,7 +14,7 @@ class DomainWriter(object):
         self.has_log = log
         self.site = pywikibot.Site("meta", "meta")
         self.trigger = trigger
-        self.prefix = 'Web2Cit/monitor/checks/'
+        self.prefix = 'Web2Cit/monitor/'
 
     def write(self):
         if self.domain is None:

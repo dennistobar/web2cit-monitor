@@ -1,6 +1,6 @@
 <%page args="field"/>
 |-
-{{:Web2Cit/monitor/templates/results/field
+{{Web2Cit/results/field
 |fieldname = ${field.get('name', '')}
 |expected =
     % for test_field in field.get('test', []):
