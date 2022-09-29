@@ -21,8 +21,8 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     mylookup = TemplateLookup(directories=['.', 'templates'])
     log = Template(filename='templates/log.txt', lookup=mylookup)
 
-    text = """|-
-{{{{ :Web2Cit/monitor/templates/log/row
+    text = """
+{{{{ Web2Cit/log/row
 | timestamp = {0}
 | trigger = {1}
 | tests_run = {2}
@@ -44,7 +44,7 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
                       previous_text, re.DOTALL | re.MULTILINE)
 
     # Join all groups if exists
-    past_text = "\n".join(past.groups()) if past is not None else ''
+    past_text = "\n|-\n".join(past.groups()) if past is not None else ''
     older_text = "\n".join(older.groups()) if older is not None else ''
 
     # Join in a new text
