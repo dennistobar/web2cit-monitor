@@ -32,8 +32,7 @@ class Prefix(object):
         """
         domains = []
         for page in self.generator:
-            delta = page.editTime() - datetime.datetime.now()
-            if (delta < datetime.timedelta(hours=hours)):
+            if ((page.editTime() + datetime.timedelta(hours=hours)) < datetime.datetime.now()):
                 continue
 
             title = page.title().replace(self.prefix, '')
