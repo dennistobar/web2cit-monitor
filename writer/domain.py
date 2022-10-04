@@ -1,4 +1,6 @@
 import os
+from random import random
+from time import sleep
 from web2citwrapper import Domain
 from writer import write_detailed, write_main_log
 from web2citwrapper import Domain
@@ -32,10 +34,12 @@ class DomainWriter(object):
             if self.has_log is True:
                 self.write_log('domain', results_text)
                 self.write_log('logs', log_text)
+                self.write_domain_check(domain)
                 print('Log write: {}'.format(self.domain))
             if self.has_log is False:
                 self.write_meta(page_base, results_text)
                 self.write_meta(page_base_log, log_text)
+                self.write_domain_check(domain)
                 print('Meta write: {}'.format(self.domain))
 
         except Web2CitError as e:
@@ -52,7 +56,21 @@ class DomainWriter(object):
 
     def write_meta(self, page: pywikibot.Page, text: str,
                    summary: str = 'Update domain check'):
+        sleep(random() % 30)
         page.put(text, summary=summary, botflag=True)
+
+    def write_domain_check(self, domain: Domain):
+        """
+        Writes the domain log at check page if the domain is new
+        """
+        page = pywikibot.Page(self.site, 'Web2Cit/monitor')
+        new_text = page.text
+        if new_text.find('/{}/results'.format(domain.get_domain_to_meta())) == -1:
+            new_text = new_text.replace('|}', '|-\n| [[/{0}/results|{1}]] {{{{/{0}/log}}}}\n|}}'.format(
+                domain.get_domain_to_meta(), self.domain))
+        if(new_text != page.text):
+            page.put(
+                new_text, summary='Adding a new domain: {}'.format(self.domain))
 
     def get_page(self, domain: str, type: str) -> pywikibot.Page:
         """

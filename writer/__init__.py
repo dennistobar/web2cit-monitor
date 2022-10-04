@@ -3,6 +3,7 @@ from datetime import datetime
 from mako.template import Template
 from mako.lookup import TemplateLookup
 import re
+import pywikibot
 
 
 def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: str = ''):
@@ -18,6 +19,10 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     patterns = domain.get_config('patterns')
     tests = domain.get_config('tests')
 
+    site = pywikibot.Site('meta', 'meta')
+    page = pywikibot.Page(
+        site, 'Web2Cit/monitor/{}/results'.format(domain.get_domain_to_meta()))
+
     mylookup = TemplateLookup(directories=['.', 'templates'])
     log = Template(filename='templates/log.txt', lookup=mylookup)
 
@@ -30,10 +35,11 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
 | templates_rev_id = {4}
 | patterns_rev_id = {5}
 | tests_rev_id = {6}
+| results_rev_id = {7}
     }}}}
 |-""".format(
         datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S%z'), trigger,
-        tests_counted, score, templates, patterns, tests)
+        tests_counted, score, templates, patterns, tests, page.latest_revision_id)
 
     # Obtain the latest check
     past = re.search(r"<onlyinclude>(.*)<\/onlyinclude>",
@@ -49,6 +55,7 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
 
     # Join in a new text
     old_text = past_text + '\n' + older_text
+    old_text = re.sub(r'\n{2,}', '\n', old_text, re.DOTALL | re.MULTILINE)
 
     return log.render(new_text=text, old_text=old_text)
 
