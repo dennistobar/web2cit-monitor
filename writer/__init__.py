@@ -19,9 +19,13 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     patterns = domain.get_config('patterns')
     tests = domain.get_config('tests')
 
-    site = pywikibot.Site('meta', 'meta')
-    page = pywikibot.Page(
-        site, 'Web2Cit/monitor/{}/results'.format(domain.get_domain_to_meta()))
+    try:
+        site = pywikibot.Site('meta', 'meta')
+        page = pywikibot.Page(
+            site, 'Web2Cit/monitor/{}/results'.format(domain.get_domain_to_meta()))
+        rev_id = page.latest_revision_id
+    except:
+        rev_id = 0
 
     mylookup = TemplateLookup(directories=['.', 'templates'])
     log = Template(filename='templates/log.txt', lookup=mylookup)
@@ -39,7 +43,7 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     }}}}
 |-""".format(
         datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S%z'), trigger,
-        tests_counted, score, templates, patterns, tests, page.latest_revision_id)
+        tests_counted, score, templates, patterns, tests, rev_id)
 
     # Obtain the latest check
     past = re.search(r"<onlyinclude>(.*)<\/onlyinclude>",
