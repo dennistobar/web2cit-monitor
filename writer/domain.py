@@ -38,6 +38,9 @@ class DomainWriter(object):
                 print('Log write: {}'.format(self.domain))
             if self.has_log is False:
                 self.write_meta(page_base, results_text)
+                # do reload
+                log_text = write_main_log(
+                    domain, trigger=self.trigger, previous_text=page_base_log.text)
                 self.write_meta(page_base_log, log_text)
                 self.write_domain_check(domain)
                 print('Meta write: {}'.format(self.domain))
