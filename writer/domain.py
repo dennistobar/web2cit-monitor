@@ -1,4 +1,6 @@
 import os
+from random import random
+from time import sleep
 from web2citwrapper import Domain
 from writer import write_detailed, write_main_log
 from web2citwrapper import Domain
@@ -52,6 +54,7 @@ class DomainWriter(object):
 
     def write_meta(self, page: pywikibot.Page, text: str,
                    summary: str = 'Update domain check'):
+        sleep(random() % 30)
         page.put(text, summary=summary, botflag=True)
 
     def get_page(self, domain: str, type: str) -> pywikibot.Page:
