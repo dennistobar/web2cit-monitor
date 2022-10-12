@@ -10,7 +10,7 @@ def parse_args():
         description="Web2cit monitor to queue")
     parser.add_argument('--prefix', action="store_true",
                         help="Check all prefix")
-    parser.add_argument('--hours', type=int,
+    parser.add_argument('--hours', type=int, default=1,
                         help="Hours to be checked if there is a change")
     parser.add_argument('--all', action="store_true",
                         help="Programmed all domains")
@@ -29,7 +29,7 @@ def main():
 
     if parameters.get('prefix') is True:
         pf = Prefix()
-        domains = pf.check_changed(hours=parameters.get('hours', 1))
+        domains = pf.check_changed(hours=parameters.get('hours'))
 
         for domain in domains:
             currentDateTime = datetime.datetime.now() + datetime.timedelta(hours=1)
