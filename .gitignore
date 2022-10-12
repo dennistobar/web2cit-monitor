@@ -173,3 +173,5 @@ apicache-*
 throttle*
 
 user-config.py
+
+db/monitor.sqlite

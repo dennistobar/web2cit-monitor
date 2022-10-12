@@ -7,7 +7,7 @@ import sqlite3
 def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
-        description="Web2cit monitor monitor to queue")
+        description="Web2cit monitor to queue")
     parser.add_argument('--prefix', action="store_true",
                         help="Check all prefix")
     parser.add_argument('--hours', type=int,
@@ -32,7 +32,7 @@ def main():
         domains = pf.check_changed(hours=parameters.get('hours', 1))
 
         for domain in domains:
-            currentDateTime = datetime.datetime.now()
+            currentDateTime = datetime.datetime.now() + datetime.timedelta(hours=1)
             cur.execute("INSERT INTO queue (command, run, trigger) VALUES(?, ?, ?)",
                         ('python3 main.py --domain {} --trigger "{}"'.format(domain, 'changed configuration'),
                          currentDateTime,
@@ -45,7 +45,7 @@ def main():
         pf = Prefix()
         domains = pf.run()
         for domain in domains:
-            currentDateTime = datetime.datetime.now() + datetime.timedelta(hours=1)
+            currentDateTime = datetime.datetime.now()
             cur.execute("INSERT INTO queue (command, run, trigger) VALUES(?, ?, ?)",
                         ('python3 main.py --domain {} --trigger "{}"'.format(domain, 'programmed'),
                          currentDateTime,
