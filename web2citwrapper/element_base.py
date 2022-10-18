@@ -67,7 +67,7 @@ class ElementBase(object):
         """Obtain number of tests"""
         return len(list(self.retrieve()))
 
-    def score(self) -> float | str:
+    def score(self):
         """Obtain score of result"""
         return self.score_data
 
