@@ -58,7 +58,8 @@ class ElementBase(object):
         if len(self.targets) == 0:
             json = comm.get({**self.value, 'tests': 'true'})
             self.info_data = json.get('info', {})
-            self.targets = self._parse_response(json)
+            self.targets = self._parse_response(json).get('targets')
+            self.score_data = self._parse_response(json).get('score', 'n/d')
         for target in self.targets:
             yield ResultElement(target)
 
@@ -66,9 +67,9 @@ class ElementBase(object):
         """Obtain number of tests"""
         return len(list(self.retrieve()))
 
-    def score(self) -> float:
+    def score(self) -> float | str:
         """Obtain score of result"""
-        return statistics.mean([x.score() if x.score() is not None else 0 for x in self.retrieve()])
+        return self.score_data
 
     def info(self) -> dict:
         """Obtain information about result"""
@@ -94,7 +95,7 @@ class ElementBase(object):
             raise NoResultsError('Targets is not a list')
         if len(json.get('data').get('targets')) == 0:
             raise NoResultsError('Target is a empty list')
-        return json.get('data').get('targets')
+        return json.get('data')
 
 
 class Domain(ElementBase):

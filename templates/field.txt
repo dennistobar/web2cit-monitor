@@ -10,6 +10,6 @@
     % for output_field in field.get('output', []):
 * ${output_field}
         % endfor
-|score = ${round(field.get('score'), 4)*100 if field.get('score') is not None else '-'}
+|score = ${round(field.get('score'), 4)*100 if field.get('score') is not None else 'n/d'}
 |since = ?
 }}
