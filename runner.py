@@ -5,6 +5,7 @@ con = sqlite3.connect("db/monitor.sqlite",
                       detect_types=sqlite3.PARSE_DECLTYPES |
                       sqlite3.PARSE_COLNAMES)
 cur = con.cursor()
+cur_update = con.cursor()
 
 res = cur.execute(
     "SELECT id, domain, trigger FROM queue WHERE run < datetime('now') and status = 0")
@@ -15,7 +16,8 @@ for row in res.fetchall():
     writer = DomainWriter(domain=domain, trigger=trigger)
     writer.write()
 
-    cur.execute("""UPDATE queue SET status = 1 WHERE id = ?""", (row_id))
+    cur_update.execute(
+        """UPDATE queue SET status = 1 WHERE id = ?""", (row_id,))
     con.commit()
 
 con.close()
