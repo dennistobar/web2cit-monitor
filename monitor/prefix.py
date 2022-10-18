@@ -11,8 +11,8 @@ class Prefix(object):
 
     def __init__(self):
         self.site = pywikibot.Site('meta')
-        self.generator = pagegenerators.PrefixingPageGenerator(
-            self.prefix, site=self.site)
+        self.generator = list(pagegenerators.PrefixingPageGenerator(
+            self.prefix, site=self.site))
 
     def run(self) -> Set:
         domains = []
@@ -34,7 +34,7 @@ class Prefix(object):
             dom = Domain(domain)
             domains.append('{}/{}/log'.format(self.prefix_monitor,
                                               dom.get_domain_to_meta()))
-        return pagegenerators.PagesFromTitlesGenerator(domains)
+        return list(pagegenerators.PagesFromTitlesGenerator(domains))
 
     def check_changed(self, hours: int = 1) -> Set:
         """
