@@ -1,21 +1,24 @@
 from web2citwrapper import comm
 from typing import Iterator
-import statistics
 
 
 class NoResultsError(Exception):
     """Raised the parsed element has no targets"""
 
 
+class ResultHasNoTargetsError(Exception):
+    """Raised the parsed element has no targets"""
+
+
 class ResultElement(object):
     data = {}
 
-    def __init__(self, data: dict = None):
+    def __init__(self, data: dict = {}):
         self.data = data
 
     def path(self) -> str:
         """Obtain tested path"""
-        return self.data.get('path')
+        return self.data.get('path', '')
 
     def result(self) -> dict:
         """
@@ -23,26 +26,31 @@ class ResultElement(object):
         it could be safe do .pop
         """
         if 'error' in self.data.keys():
-            raise NoResultsError(self.data.get('error').get('message', ''))
+            raise ResultHasNoTargetsError(
+                self.data.get('error', {}).get('message', ''))
         if 'results' not in self.data.keys():
-            raise NoResultsError('There is no results key')
+            raise ResultHasNoTargetsError('There is no results key')
         if isinstance(self.data.get('results'), list) is False:
-            raise NoResultsError('results is not a list')
-        if len(self.data.get('results')) == 0:
-            raise NoResultsError('results has no elements')
-        return self.data.get('results')[0]
+            raise ResultHasNoTargetsError('results is not a list')
+        if len(self.data.get('results', [])) == 0:
+            raise ResultHasNoTargetsError('results has no elements')
+        return self.data.get('results', [])[0]
 
     def fields(self) -> list:
         """Obtain all fields from result"""
-        return self.result().get('fields')
+        return self.result().get('fields', [])
 
-    def score(self) -> float:
+    def score(self) -> float | str:
         """Obtain score of result"""
-        return self.result().get('score')
+        return self.result().get('score', 'n/d')
 
     def href(self) -> str:
         """Obtain href for result"""
-        return self.data.get('href')
+        return self.data.get('href', '')
+
+    def error(self) -> str | None:
+        """Obtain error message for result"""
+        return self.data.get('error', {}).get('message', None)
 
 
 class ElementBase(object):
@@ -93,7 +101,7 @@ class ElementBase(object):
             raise NoResultsError('There is no "targets" key')
         if isinstance(json.get('data', {}).get('targets'), list) is False:
             raise NoResultsError('Targets is not a list')
-        if len(json.get('data', {}).get('targets', {})) == 0:
+        if len(json.get('data', {}).get('targets', [])) == 0:
             raise NoResultsError('Target is a empty list')
         return json.get('data', {})
 

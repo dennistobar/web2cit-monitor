@@ -6,7 +6,7 @@ import re
 import pywikibot
 
 
-def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: str = ''):
+def write_logs(domain: Domain, trigger: str = 'programmed', previous_text: str = '') -> str:
     """
     Writes the main log file for the given domain.
     """
@@ -61,12 +61,12 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     old_text = past_text + '\n' + older_text
     old_text = re.sub(r'\n{2,}', '\n', old_text, re.DOTALL | re.MULTILINE)
 
-    return log.render(new_text=text, old_text=old_text)
+    return str(log.render(new_text=text, old_text=old_text))
 
 
 def write_results(domain: Domain) -> str:
     """
-    Writes the detailed log file for the given domain.
+    Writes the detailed results for the given domain.
     """
     paths = list(domain.retrieve())
     mylookup = TemplateLookup(directories=['.', 'templates'])
