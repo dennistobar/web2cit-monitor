@@ -9,17 +9,17 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.0
+      - Web2Cit/1.0 (https://mediawiki.org/wiki/Web2Cit/; web2cit@test.org)
     method: GET
     uri: https://web2cit.toolforge.org/translate?format=json&url=https%3A%2F%2Fmediawiki.org&tests=true
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA42RMW/EIAyF/4vHUwTXjlk7dehW9YZTB9I4xC0hCIyiKsp/r2m562U7sSD43vOz
-        vQL5YYZ2BRPoDWOi2UMLD+qojtDAx+wHsuU7GGaMPtX7KNAJu8cnYt0bNnqOVk/Yk1noi/SFVp9J
+        H4sIAAAAAAAAA42RMW/EIAyF/4vHUwS9jlk7dehW9YZTB9I4xC0hCIyiKsp/r2m562U7sSD43vOz
+        vQL5YYZ2BRPoDWOi2UMLR3VUD9DAx+wHsuU7GGaMPtX7KNAJu8cnYt0bNnqOVk/Yk1noi/SFVp9J
         /LYGGKfgDOOd+it+Y5D4brGgVbhJ7ZKvxGYTLRaT8287pQUtPUZM2dXnS13BRTgQuv6P92ZC4UmA
         1++AIpszh8xiBgt2wViE961ZoYJM7PbUSxnOSYaz40LuHKUR+2e/91wWdR2nkuHuVM54m0vJ2xjo
-        hZHTwBhxkLAjc0it/l9L8Skd1+0IcjiASLYfvtpAHwYCAAA=
+        hZHTwBhxkLAjc0it/l9L8Skd1+0IcjiASLYfN0FtRgYCAAA=
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -40,9 +40,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 28 Jul 2022 02:06:47 GMT
+      - Tue, 08 Nov 2022 02:04:41 GMT
       ETag:
-      - W/"206-XYykYXK3UMpl0M7oxqctxPxajL0"
+      - W/"206-859Z2da24aZ0mgIgqQ/6PeVFnzI"
       Permissions-Policy:
       - interest-cohort=()
       Server:

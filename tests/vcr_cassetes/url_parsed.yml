@@ -9,22 +9,22 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.0
+      - Web2Cit/1.0 (https://mediawiki.org/wiki/Web2Cit/; web2cit@test.org)
     method: GET
     uri: https://web2cit.toolforge.org/translate?format=json&url=https%3A%2F%2Fwww.elpais.com.uy%2Finformacion%2Fpolitica%2Flacalle-salio-cruce-diputado-mpp-dijo-hay-ola-robos-violentos.html&tests=true
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA7WUS4obMRCGryK0HPqdEAfvTBgGgwMmBGeRZFHuLrtl1JIiqccY05CD5ApZ5Qhz
-        k5wkJT8GGZyBWRj1Qq3Hp/r/kmrPhVppPt5zMGKB1gmt+JiXWZEVPOG1ViuxDtMGvEer3Knf0qIv
-        uKw+CJ834CHvd3mtuxylAeHy7Xabn3dkG0fMIeEeOyPB4ysYz1uOkIRbfBQNH1dv3hZFVY4OVOdf
-        RaTl12jl+2oYiBfUBJEe7BoD+etBfBCcB69sBzWZlBsthRc15BJqkBJTB1LotLZ9jWkjTO+h0Wln
-        DP1sdNrCLtUSUquX2qWPQktUXrus9Z0koy26Xp5OO4uOrL7ZySR4JVA2R50KOiSdgiL4vDNIcene
-        kxIygSvcOgMG7cSSbIn8e8io+++cq7UlWDkke37ieuFpXwydHb1jwbunPwwkO/jHGmRnC6kv2cf5
-        nP3ow+BGHzp/f/4iR1mvgJGrYf3BWPZs7DceB3jrc66INf1SCtdiM1UXku8lm8PTbxeHF49dQUlQ
-        6x7Wl9ZRMhTxY0w0dIUCvW+1nQGlLE7BYjK7/zSdsIfpLGYtQKIVwB6EDMMnXpFVo8sWpZdezkWI
-        0QWpiqpKi3f0xbAhBo/KKm4vzSW8tbiii9p6b9w4D+UmO1aejIpQRrXodi/1VNbo9Ls7/lKUw/AP
-        svdL5l0FAAA=
+        H4sIAAAAAAAAA7WUzYrbMBDHX0XouMQf8babbG5hWZZACqGU9ND2MLEnsYJsqZK8IQRDH6Sv0FMf
+        Yd+kT9JRvpBpurCH4BzkkfSb+f8nnh0X9VLx0Y6DFnM0Vqiaj3g/7scp7/Fc1Uux8tsanENT2+O6
+        pEOfcZE9CJcU4CBptkmuqgSlBmGTzWaTnG7Ea0vMtscdVlqCwzcwzlcOkB43+CwKPspu79/37wb3
+        e6p1byLS8X9o79K0P8zalnhejRfpwKzQk7/sxXvBiffKVJCTSYlWUjiRQyIhBykxsiCFinLT5BgV
+        QjcOChVVWtPLWkUlbCMlITJqoWz0LJTE2ikbl66SZLRB28hjtpPowOqrZSbBS4GyOOisoULSKaiC
+        T1uNVJdqHCkhE3iNG6tBoxkbki2Rf/Mdtf/ds7kyBOu3vR0/cp1wdC+ETg/eMe/dy28Gku39YwWy
+        k4W0luzDbMa+Nz64VvvFnx8/yVHW1MDIVX9+byw7G/uVhwVeO88FsbpZSGFLLCZ1R/KjZDN4+WXD
+        8sLYBZSEetXAqmsdNaMmfogJQhco0LhSmSlQy8IWzMfTx4+TMXuaTEPWHCQaAexJSB8+8tI4G3Sf
+        oL305XRLzNIsi9I7+oXkbvRcaJhkOOg8w/a1zR4vDS7pb1s6p+0o8cMnPsyhmEZSTJPpet/tcchR
+        9psb/mqZbfsXvfnao2wFAAA=
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -45,9 +45,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 28 Jul 2022 02:06:53 GMT
+      - Tue, 08 Nov 2022 02:04:44 GMT
       ETag:
-      - W/"55d-kqLsY1KH9pgVGTp4Xweq6Y/yLAg"
+      - W/"56c-l1pc8qwRowSNtHLNE9Dj8vYK/tw"
       Permissions-Policy:
       - interest-cohort=()
       Server:
