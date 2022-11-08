@@ -40,7 +40,7 @@ class ResultElement(object):
         """Obtain all fields from result"""
         return self.result().get('fields', [])
 
-    def score(self) -> float | str:
+    def score(self):
         """Obtain score of result"""
         return self.result().get('score', 'n/d')
 
@@ -48,7 +48,7 @@ class ResultElement(object):
         """Obtain href for result"""
         return self.data.get('href', '')
 
-    def error(self) -> str | None:
+    def error(self):
         """Obtain error message for result"""
         return self.data.get('error', {}).get('message', None)
 
@@ -75,7 +75,7 @@ class ElementBase(object):
         """Obtain number of tests"""
         return len(list(self.retrieve()))
 
-    def score(self) -> float | str:
+    def score(self):
         """Obtain score of result"""
         return self.score_data
 
@@ -85,7 +85,7 @@ class ElementBase(object):
             self.retrieve()
         return self.info_data
 
-    def get_config(self, name: str) -> dict | None:
+    def get_config(self, name: str):
         """Obtain configuration for result"""
         if len(self.info_data) == 0:
             return None
