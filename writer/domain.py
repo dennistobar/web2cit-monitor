@@ -18,7 +18,10 @@ class DomainWriter(object):
         self.trigger = trigger
         self.prefix = 'Web2Cit/monitor/'
 
-    def write(self):
+    def write(self) -> None:
+        """
+        Execute process to write in Meta or log files
+        """
         if self.domain is None:
             raise Web2CitError('Domain not defined')
 
@@ -50,7 +53,7 @@ class DomainWriter(object):
         except NoResultsError as e:
             print('[?] {} error {}'.format(self.domain, e))
 
-    def write_log(self, type: str, text: str):
+    def write_log(self, type: str, text: str) -> None:
         """
         Writes the log file.
         """
@@ -58,11 +61,11 @@ class DomainWriter(object):
             file.write(text)
 
     def write_meta(self, page: pywikibot.Page, text: str,
-                   summary: str = 'Update domain check'):
+                   summary: str = 'Update domain check') -> None:
         sleep(random() % 30)
         page.put(text, summary=summary, botflag=True)
 
-    def write_domain_check(self, domain: Domain):
+    def write_domain_check(self, domain: Domain) -> None:
         """
         Writes the domain log at check page if the domain is new
         """
@@ -81,7 +84,7 @@ class DomainWriter(object):
         """
         return pywikibot.Page(self.site, self.prefix + domain + '/' + type)
 
-    def check_dirs(self):
+    def check_dirs(self) -> None:
         """
         Checks if the directories exist.
         """

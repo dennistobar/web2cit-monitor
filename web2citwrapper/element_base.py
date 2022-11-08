@@ -50,7 +50,7 @@ class ElementBase(object):
     targets = []
     info_data = {}
 
-    def __init__(self, value: dict = None):
+    def __init__(self, value: dict = {}):
         self.value = value
 
     def retrieve(self) -> Iterator[ResultElement]:
@@ -67,7 +67,7 @@ class ElementBase(object):
         """Obtain number of tests"""
         return len(list(self.retrieve()))
 
-    def score(self):
+    def score(self) -> float | str:
         """Obtain score of result"""
         return self.score_data
 
@@ -77,25 +77,25 @@ class ElementBase(object):
             self.retrieve()
         return self.info_data
 
-    def get_config(self, name: str) -> dict:
+    def get_config(self, name: str) -> dict | None:
         """Obtain configuration for result"""
         if len(self.info_data) == 0:
             return None
         return self.info_data.get('config', {}).get(name, {}).get('revid', '-')
 
-    def _parse_response(self, json: dict = None) -> dict:
+    def _parse_response(self, json: dict = {}) -> dict:
         """Parse the JSON retrieved"""
         if 'error' in json.keys():
-            raise NoResultsError(json.get('error').get('message', ''))
+            raise NoResultsError(json.get('error', {}).get('message', ''))
         if 'data' not in json.keys():
             raise NoResultsError('There is no "data" key')
-        if 'targets' not in json.get('data'):
+        if 'targets' not in json.get('data', {}):
             raise NoResultsError('There is no "targets" key')
-        if isinstance(json.get('data').get('targets'), list) is False:
+        if isinstance(json.get('data', {}).get('targets'), list) is False:
             raise NoResultsError('Targets is not a list')
-        if len(json.get('data').get('targets')) == 0:
+        if len(json.get('data', {}).get('targets', {})) == 0:
             raise NoResultsError('Target is a empty list')
-        return json.get('data')
+        return json.get('data', {})
 
 
 class Domain(ElementBase):
@@ -112,7 +112,7 @@ class Domain(ElementBase):
 
 
 class URL(ElementBase):
-    def __init__(self, url: str = None):
+    def __init__(self, url: str):
         super().__init__({'url': url})
 
     def retrieve(self) -> ResultElement:

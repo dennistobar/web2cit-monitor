@@ -71,5 +71,5 @@ def write_results(domain: Domain) -> str:
     paths = list(domain.retrieve())
     mylookup = TemplateLookup(directories=['.', 'templates'])
     base = Template(filename='templates/base.txt', lookup=mylookup)
-    return base.render(domain_name=domain.value.get(
-        'domain'), paths=paths)
+    return str(base.render(domain_name=domain.value.get(
+        'domain'), paths=paths))
