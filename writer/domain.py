@@ -2,7 +2,7 @@ import os
 from random import random
 from time import sleep
 from web2citwrapper import Domain
-from writer import write_detailed, write_main_log
+from writer import write_results, write_main_log
 from web2citwrapper import Domain
 from web2citwrapper.comm import Web2CitError
 from web2citwrapper.element_base import NoResultsError
@@ -27,7 +27,7 @@ class DomainWriter(object):
             page_base = self.get_page(domain.get_domain_to_meta(), 'results')
             page_base_log = self.get_page(domain.get_domain_to_meta(), 'log')
 
-            results_text = write_detailed(domain)
+            results_text = write_results(domain)
             log_text = write_main_log(
                 domain, trigger=self.trigger, previous_text=page_base_log.text)
 
@@ -48,7 +48,7 @@ class DomainWriter(object):
         except Web2CitError as e:
             print('[!] {} error {}'.format(self.domain, e))
         except NoResultsError as e:
-            print('[!] {} error {}'.format(self.domain, e))
+            print('[?] {} error {}'.format(self.domain, e))
 
     def write_log(self, type: str, text: str):
         """

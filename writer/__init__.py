@@ -64,7 +64,7 @@ def write_main_log(domain: Domain, trigger: str = 'programmed', previous_text: s
     return log.render(new_text=text, old_text=old_text)
 
 
-def write_detailed(domain: Domain) -> str:
+def write_results(domain: Domain) -> str:
     """
     Writes the detailed log file for the given domain.
     """
