@@ -9,24 +9,24 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.0
+      - Web2Cit/1.0 (https://mediawiki.org/wiki/Web2Cit/; web2cit@test.org)
     method: GET
     uri: https://web2cit.toolforge.org/translate?format=json&domain=www.elobservador.com.uy&tests=true
   response:
     body:
       string: !!binary |
         H4sIAAAAAAAAA+2Uz2obMRDGX0XoGCyvd71OHd9KaKEQaKH/Dk0Ok91xrCJLQtLGuMEPlFtL3iB+
-        sY52nURuHEgKTXso7EFoV9/OfJ/md8Glnho+ueBg5Sd0XhrNJzzvD/oD3uOV0VN5Fl9bCAGd9pv1
-        jD76jKfFoQxZDQGyZplVZp6hMqce3TnUxmWLxSK7Odf/6kl51eMB51ZBwCcr3R7spHrc4bms+aQY
-        Fvv7ZXHQavvwG7p06J7m8GAwGg5WK1KN/cW2A7gzjPpfWjuiBZk21LsHFYwAVYH+ZoQyXpSFGIlK
-        LIUzcyuNQCUcVsbVYiZ9ME5WRtQoYkvoIDQOBGp60NG3WjSuOWtgKYpBUeR5+WJUDCkMh75Rm//f
-        mJHE8Yy1kClTiaruvNAwR/JCUk0flhapUtME2wQyimtceAvU5EsXZKWQn8Qb4B9858kkEstXvQu+
-        0Q0y0LlU9H30m3V+r68YGc7Koje6/n7Ilqx1nHZRMbe+jJ6z6Pn6KprOamSJ6Qw1PWR6XHzsTE8r
-        /OM/2tEu3bbtbuMlEINc5GVa2vbuDh3bnCrpZ1i/0VvmvVLs7e2Ipor3XuwQhSbMjDsCCjAJ5C5T
-        Wj146rV0jzmWSiTrHp85nNI1m4Vg/SSLcOmntOkTfvpEoeecyA3cqKq9PWLbL1hQUIFSSBSg+4+S
-        Zpxwek6MBWe0sMbR/CucGm2EBXo7Bx3ibexo4S0SVJZCgQhGESV0JVtK0AaxJICYSg0qYoR2Kphb
-        0NASY5iPCRrjsqSM/jNjA6KjLgwCxLsuDJaEwSgM4oJaX8Y0WEyDHfObPFqUYJsHHVfA7vI45pEc
-        tNUmwtpEImNop01k/QPSEfurRewYzAdYMxT5mJ8kCH4kS1bJvKbrp83uvzA224OdtrX6CU+aTgYy
+        sY52nURuHEgKTXso7EFoV9/OfJ/md8Glnho+ueBg5Sd0XhrNJzzv5/0B7/HK6Kk8i68thIBO+816
+        Rh99xtPiUIashgBZs8wqM89QmVOP7hxq47LFYpHdnOt/9aS86vGAc6sg4JOVbg92Uj3u8FzWfFIM
+        i/39sjhotX34DV06dE9zeDAYDQerFanG/mLbAdwZRv0vrR3Rgkwb6t2DCkaAqkB/M0IZL8pCjEQl
+        lsKZuZVGoBIOK+NqMZM+GCcrI2oUsSV0EBoHAjU96OhbLRrXnDWwFMWgKPK8fDEqhhSGQ9+ozf9v
+        zEjieMZayJSpRFV3XmiYI3khqaYPS4tUqWmCbQIZxTUuvAVq8qULslLIT+IN8A++82QSieWr3gXf
+        6AYZ6Fwq+j76zTq/11eMDGdl0Rtdfz9kS9Y6TruomFtfRs9Z9Hx9FU1nNbLEdIaaHjI9Lj52pqcV
+        /vEf7WiXbtt2t/ESiEEu8jItbXt3h45tTpX0M6zf6C3zXin29nZEU8V7L3aIQhNmxh0BBZgEcpcp
+        rR489Vq6xxxLJZJ1j88cTumazUKwfpJFuPRT2vQJP32i0HNO5AZuVNXeHrHtFywoqEApJArQ/UdJ
+        M044PSfGgjNaWONo/hVOjTbCAr2dgw7xNna08BYJKkuhQASjiBK6ki0laINYEkBMpQYVMUI7Fcwt
+        aGiJMczHBI1xWVJG/5mxAdFRFwYB4l0XBkvCYBQGcUGtL2MaLKbBjvlNHi1KsM2Djitgd3kc80gO
+        2moTYW0ikTG00yay/gHpiP3VInYM5gOsGYp8zE8SBD+SJatkXtP102b3Xxib7cFO21r9BAWnAooy
         CQAA
     headers:
       Access-Control-Allow-Origin:
@@ -48,9 +48,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 28 Jul 2022 02:41:59 GMT
+      - Tue, 08 Nov 2022 02:04:39 GMT
       ETag:
-      - W/"932-n94EYAss3VkMZas/QAhurQemjug"
+      - W/"932-w+O4c0AnSOrYAv6h6/ynirWWC3s"
       Permissions-Policy:
       - interest-cohort=()
       Server:

@@ -2,10 +2,10 @@ import os
 from random import random
 from time import sleep
 from web2citwrapper import Domain
-from writer import write_detailed, write_main_log
+from writer import write_results, write_logs
 from web2citwrapper import Domain
 from web2citwrapper.comm import Web2CitError
-from web2citwrapper.element_base import NoResultsError
+from web2citwrapper.element_base import NoResultsError, ResultHasNoTargetsError
 import pywikibot
 
 
@@ -18,7 +18,10 @@ class DomainWriter(object):
         self.trigger = trigger
         self.prefix = 'Web2Cit/monitor/'
 
-    def write(self):
+    def write(self) -> None:
+        """
+        Execute process to write in Meta or log files
+        """
         if self.domain is None:
             raise Web2CitError('Domain not defined')
 
@@ -27,8 +30,8 @@ class DomainWriter(object):
             page_base = self.get_page(domain.get_domain_to_meta(), 'results')
             page_base_log = self.get_page(domain.get_domain_to_meta(), 'log')
 
-            results_text = write_detailed(domain)
-            log_text = write_main_log(
+            results_text = write_results(domain)
+            log_text = write_logs(
                 domain, trigger=self.trigger, previous_text=page_base_log.text)
 
             if self.has_log is True:
@@ -39,18 +42,20 @@ class DomainWriter(object):
             if self.has_log is False:
                 self.write_meta(page_base, results_text)
                 # do reload
-                log_text = write_main_log(
+                log_text = write_logs(
                     domain, trigger=self.trigger, previous_text=page_base_log.text)
                 self.write_meta(page_base_log, log_text)
                 self.write_domain_check(domain)
                 print('Meta write: {}'.format(self.domain))
 
         except Web2CitError as e:
-            print('[!] {} error {}'.format(self.domain, e))
+            print('[!] {} Web2Cit error: {}'.format(self.domain, e))
         except NoResultsError as e:
-            print('[!] {} error {}'.format(self.domain, e))
+            print('[?] {} No Results error: {}'.format(self.domain, e))
+        except ResultHasNoTargetsError as e:
+            print('[!!] {} Targets error: {}'.format(self.domain, e))
 
-    def write_log(self, type: str, text: str):
+    def write_log(self, type: str, text: str) -> None:
         """
         Writes the log file.
         """
@@ -58,11 +63,11 @@ class DomainWriter(object):
             file.write(text)
 
     def write_meta(self, page: pywikibot.Page, text: str,
-                   summary: str = 'Update domain check'):
+                   summary: str = 'Update domain check') -> None:
         sleep(random() % 30)
         page.put(text, summary=summary, botflag=True)
 
-    def write_domain_check(self, domain: Domain):
+    def write_domain_check(self, domain: Domain) -> None:
         """
         Writes the domain log at check page if the domain is new
         """
@@ -81,7 +86,7 @@ class DomainWriter(object):
         """
         return pywikibot.Page(self.site, self.prefix + domain + '/' + type)
 
-    def check_dirs(self):
+    def check_dirs(self) -> None:
         """
         Checks if the directories exist.
         """

@@ -17,14 +17,18 @@ Add this page to your watchlist to get notifications when test results change.
 {| class="wikitable sortable"
 |-
 ! Path !! Score !! Since<ref name="since">The time since which a row has remained unchanged</ref>
-% for path in paths:
+%for path in paths:
 |-
-    % if path.score() is not None:
+    %try:
+        %if path.score() is not None:
 | [[#${path.path()}]] || ${round(path.score(), 4)*100}% || ?
-    % else:
+        %else:
 | [[#${path.path()}]] || - || ?
-    % endif
-% endfor
+        %endif
+    %except Exception:
+| [[#${path.path()}]] || - || ?
+    %endtry
+%endfor
 |}
 
 % for path in paths:
@@ -32,11 +36,17 @@ Add this page to your watchlist to get notifications when test results change.
 {| class="wikitable"
 |-
 ! Fieldname || Actual || Expected || Score || Since<ref name="since"/>
+%try:
     % for field in path.fields():
         <%include file="field.txt" args="field=field"/>
     % endfor
 |}
-% endfor
+%except Exception:
+|-
+| colspan="5" | Error in evaluation: ${path.error()}
+%endtry
+%endfor
+|}
 
 == Notes ==
 <references/>
