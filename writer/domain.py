@@ -32,9 +32,9 @@ class DomainWriter(object):
                 domain, trigger=self.trigger, previous_text=page_base_log.text)
 
             if self.has_log is True:
-                self.write_log('domain', results_text)
+                self.check_dirs()
+                self.write_log('results', results_text)
                 self.write_log('logs', log_text)
-                self.write_domain_check(domain)
                 print('Log write: {}'.format(self.domain))
             if self.has_log is False:
                 self.write_meta(page_base, results_text)
@@ -80,3 +80,14 @@ class DomainWriter(object):
         Gets the page of the given type.
         """
         return pywikibot.Page(self.site, self.prefix + domain + '/' + type)
+
+    def check_dirs(self):
+        """
+        Checks if the directories exist.
+        """
+        if not os.path.exists('./logs'):
+            os.makedirs('./logs')
+        if not os.path.exists('./logs/results'):
+            os.makedirs('./logs/results')
+        if not os.path.exists('./logs/logs'):
+            os.makedirs('./logs/logs')
