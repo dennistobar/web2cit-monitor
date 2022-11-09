@@ -35,12 +35,11 @@ Add this page to your watchlist to get notifications when test results change.
 === ${path.path()} ===
 {| class="wikitable"
 |-
-! Fieldname || Actual || Expected || Score || Since<ref name="since"/>
+! Fieldname || Actual || Expected || data-sort-type="number" | Score || Since<ref name="since"/>
 %try:
     % for field in path.fields():
         <%include file="field.txt" args="field=field"/>
     % endfor
-|}
 %except Exception:
 |-
 | colspan="5" | Error in evaluation: ${path.error()}

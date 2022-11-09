@@ -1,6 +1,6 @@
 {| class="wikitable sortable"
 |-
-! Timestamp !! Trigger !! # tests run !! avg score !! templates revid !! patterns revid !! tests revid
+! Timestamp !! Trigger !! data-sort-type="number" | # tests run !! data-sort-type="number" | avg score !! templates revid !! patterns revid !! tests revid
 |-
 <onlyinclude>
 ${new_text}

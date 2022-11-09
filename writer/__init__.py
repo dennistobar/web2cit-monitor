@@ -11,10 +11,9 @@ def write_logs(domain: Domain, trigger: str = 'programmed', previous_text: str =
     Writes the main log file for the given domain.
     """
     tests_counted = domain.tests_counted()
-    if isinstance(domain.score(), str):
-        score = 'n/d'
-    else:
-        score = round(domain.score(), 4)*100
+    score = 'n/d' if isinstance(domain.score(),
+                                str) else "{0:.2f}".format(round(domain.score(), 4)*100)
+
     templates = domain.get_config('templates')
     patterns = domain.get_config('patterns')
     tests = domain.get_config('tests')
