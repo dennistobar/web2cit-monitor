@@ -21,7 +21,7 @@ Add this page to your watchlist to get notifications when test results change.
 |-
     %try:
         %if path.score() is not None:
-| [[#${path.path()}]] || ${round(path.score(), 4)*100}% || ?
+| [[#${path.path()}]] || ${'{0:.2f}'.format(round(path.score(), 4)*100)} || ?
         %else:
 | [[#${path.path()}]] || - || ?
         %endif
@@ -44,8 +44,8 @@ Add this page to your watchlist to get notifications when test results change.
 |-
 | colspan="5" | Error in evaluation: ${path.error()}
 %endtry
-%endfor
 |}
+%endfor
 
 == Notes ==
 <references/>
