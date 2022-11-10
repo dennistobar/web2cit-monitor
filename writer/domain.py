@@ -54,6 +54,8 @@ class DomainWriter(object):
             print('[?] {} No Results error: {}'.format(self.domain, e))
         except ResultHasNoTargetsError as e:
             print('[!!] {} Targets error: {}'.format(self.domain, e))
+        except Exception as e:
+            print('[!!!!] {} General error: {}'.format(self.domain, e))
 
     def write_log(self, type: str, text: str) -> None:
         """
